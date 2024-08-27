@@ -13,6 +13,7 @@ A modern, scalable React + TypeScript boilerplate using Vite, with a focus on ma
 - 🧹 ESLint and Prettier for code quality and consistency
 - 🌓 Dark mode support
 - 📱 Responsive design
+- 🎭 Framer Motion for smooth animations
 
 ## Project Structure
 
@@ -22,7 +23,10 @@ src/
 ├── features/
 │   ├── todos/
 │   │   ├── components/
+│   │   │   ├── TodoItem.tsx
+│   │   │   └── TodoList.tsx
 │   │   ├── hooks/
+│   │   │   └── useTodos.ts
 │   │   ├── services/
 │   │   └── utils/
 │   └── _shared/
@@ -32,7 +36,6 @@ src/
 │       │   ├── Header.tsx
 │       │   ├── Input.tsx
 │       │   ├── Nav.tsx
-│       │   └── Table.tsx
 │       └── theme/
 │           └── index.ts
 └── pages/
@@ -100,11 +103,28 @@ This boilerplate uses Material-UI for styling. You can customize the theme in `@
 
 ## Dark Mode
 
-The application supports dark mode, which can be toggled using the switch in the header. The theme is persisted across page reloads.
+The application supports dark mode, which can be toggled using the switch in the header. The theme is persisted across page reloads using the `useLocalStorage` hook.
 
 ## Responsive Design
 
 The application is designed to be responsive, with different layouts for mobile and desktop views. This is achieved using Material-UI's `useMediaQuery` hook and responsive styling.
+
+## Todo App Feature
+
+The boilerplate includes a sample Todo App feature, showcasing the recommended structure and best practices for building features in a screaming architecture.
+
+### Components
+
+- `TodoItem`: Represents a single todo item, with options to toggle completion, edit, and delete.
+- `TodoList`: Displays a list of todo items, with options to select multiple items and delete them in bulk.
+
+### Hooks
+
+- `useTodos`: A custom hook that manages the state and logic for the Todo App feature, including fetching, adding, editing, and deleting todos.
+
+### Animations
+
+The Todo App feature uses Framer Motion to add smooth animations when adding, editing, and deleting todo items, enhancing the user experience.
 
 ## Contributing
 
@@ -120,6 +140,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Material-UI](https://material-ui.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 - [date-fns](https://date-fns.org/)
 
 ## Support
