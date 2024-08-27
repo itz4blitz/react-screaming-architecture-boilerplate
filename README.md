@@ -9,7 +9,7 @@ A modern, scalable React + TypeScript boilerplate using Vite, with a focus on ma
 - ⚛️ React for building user interfaces
 - 📁 Screaming Architecture for clear, scalable project structure
 - 🎨 Material-UI for pre-built, customizable components
-- 🛣️ Path aliases for clean import statements
+- 🛣️ Absolute import statements for clean import statements
 - 🧹 ESLint and Prettier for code quality and consistency
 - 🌓 Dark mode support
 - 📱 Responsive design
@@ -57,10 +57,22 @@ src/
    ```bash
    pnpm install
    ```
+   If you don't have `pnpm` installed, you can install it via npm:
+   ```bash
+   npm install -g pnpm
+   ```
 
 3. Start the development server:
    ```bash
    pnpm dev
+   ```
+   Alternatively, you can use npm or yarn:
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   yarn dev
    ```
 
 4. Open your browser and visit `http://localhost:5173`
@@ -75,11 +87,11 @@ src/
 
 ## Path Aliases
 
-This boilerplate uses path aliases for cleaner import statements. The following aliases are available:
+This boilerplate uses absolute import statements for cleaner import statements. The following structure is used:
 
-- `@/*`: `src/*`
-- `@features/*`: `src/features/*`
-- `@shared/*`: `src/features/_shared/*`
+- `src/*`: Root directory for all source files
+- `src/features/*`: Directory for feature-specific code
+- `src/features/_shared/*`: Directory for shared components and utilities
 
 ## Customization
 
