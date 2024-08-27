@@ -46,6 +46,9 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
               color="inherit"
               aria-label="menu"
               onClick={handleMenuOpen}
+              sx={{
+                color: theme.palette.mode === 'light' ? '#ffffff' : 'inherit', 
+              }}
             >
               <MenuIcon />
             </IconButton>
