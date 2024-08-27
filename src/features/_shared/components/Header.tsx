@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
             >
               <MenuItem onClick={handleMenuClose}>
                 <a
-                  href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork"
+                  href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/fork"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
                 <a
-                  href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new"
+                  href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/issues/new"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
         {!isMobile && (
           <>
             <Link
-              href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork"
+              href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/fork"
               target="_blank"
               rel="noopener noreferrer"
               sx={{
@@ -107,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
               <Typography variant="body1">Fork Repo</Typography>
             </Link>
             <Link
-              href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new"
+              href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/issues/new"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
