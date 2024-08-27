@@ -8,6 +8,12 @@ You can view the deployed application at the following URL:
 
 [https://itz4blitz.github.io/react-screaming-architecture-boilerplate/](https://itz4blitz.github.io/react-screaming-architecture-boilerplate/)
 
+## Join the Community
+
+Join our Discord server to discuss the project, ask questions, and get help:
+
+[https://discord.gg/8nVCV2M44U](https://discord.gg/8nVCV2M44U)
+
 ## Features
 
 - ⚡️ Vite for lightning-fast builds and hot module replacement

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 export default defineConfig({
-    base: '/screaming-architecture-boilerplate/', // Replace with your repository name
+    base: '/react-screaming-architecture-boilerplate/',
     plugins: [react()],
     resolve: {
         alias: {

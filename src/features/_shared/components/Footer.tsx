@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, IconButton, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { FaDiscord } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const theme = useTheme();
@@ -34,6 +35,14 @@ const Footer: React.FC = () => {
         rel="noopener noreferrer"
       >
         <GitHubIcon />
+      </IconButton>
+      <IconButton
+        color="inherit"
+        href="https://discord.gg/8nVCV2M44U"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaDiscord />
       </IconButton>
     </Box>
   );

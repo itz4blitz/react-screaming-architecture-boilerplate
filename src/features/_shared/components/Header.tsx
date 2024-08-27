@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
+import { FaDiscord } from 'react-icons/fa';
 
 interface HeaderProps {
   toggleDarkMode: () => void;
@@ -83,6 +84,21 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
                   <Typography variant="body1">Report a Bug</Typography>
                 </a>
               </MenuItem>
+              <MenuItem onClick={handleMenuClose}>
+                <a
+                  href="https://discord.gg/8nVCV2M44U"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: theme.palette.text.primary,
+                  }}
+                >
+                  <FaDiscord style={{ marginRight: '8px' }} />
+                  <Typography variant="body1">Join Discord</Typography>
+                </a>
+              </MenuItem>
             </Menu>
           </>
         ) : null}
@@ -114,6 +130,15 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
             >
               <BugReportIcon style={{ marginRight: '8px' }} />
               <Typography variant="body1">Report a Bug</Typography>
+            </Link>
+            <Link
+              href="https://discord.gg/8nVCV2M44U"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
+            >
+              <FaDiscord style={{ marginRight: '8px' }} />
+              <Typography variant="body1">Join Discord</Typography>
             </Link>
           </>
         )}
