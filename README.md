@@ -34,6 +34,7 @@ src/
 │   │   ├── hooks/
 │   │   │   └── useTodos.ts
 │   │   ├── services/
+│   │   │   └── todoService.ts
 │   │   └── utils/
 │   └── _shared/
 │       ├── components/
@@ -42,6 +43,8 @@ src/
 │       │   ├── Header.tsx
 │       │   ├── Input.tsx
 │       │   ├── Nav.tsx
+│       │   ├── Box.tsx
+│       │   ├── Checkbox.tsx
 │       └── theme/
 │           └── index.ts
 └── pages/
