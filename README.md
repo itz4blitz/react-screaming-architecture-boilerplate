@@ -1,4 +1,4 @@
-# Screaming Architecture Boilerplate
+# React Screaming Architecture Boilerplate
 
 A modern, scalable React + TypeScript boilerplate using Vite, with a focus on maintainable architecture and developer experience.
 
