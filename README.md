@@ -15,7 +15,7 @@ You can view the deployed application at the following URL:
 - ⚛️ React for building user interfaces
 - 📁 Screaming Architecture for clear, scalable project structure
 - 🎨 Material-UI for pre-built, customizable components
-- 🛣️ Absolute import statements for clean import statements
+- 🛣️ Absolute imports for clean import statements
 - 🧹 ESLint and Prettier for code quality and consistency
 - 🌓 Dark mode support
 - 📱 Responsive design
@@ -101,13 +101,13 @@ src/
 - `pnpm preview`: Preview the production build locally
 - `pnpm deploy`: Deploy the project to GitHub Pages
 
-## Path Aliases
+## Absolute Imports
 
-This boilerplate uses absolute import statements for cleaner import statements. The following structure is used:
+This boilerplate uses absolute imports for cleaner import statements. The following structure is used:
 
-- `src/*`: Root directory for all source files
-- `src/features/*`: Directory for feature-specific code
-- `src/features/_shared/*`: Directory for shared components and utilities
+- `@/*`: `src/*`
+- `@features/*`: `src/features/*`
+- `@shared/*`: `src/features/_shared/*`
 
 ## Customization
 
@@ -128,7 +128,7 @@ This boilerplate uses Material-UI for styling. You can customize the theme in `@
 - Implement lazy loading for better performance
 - Write unit tests for critical functionality
 - Use TypeScript's type system to its full potential
-- Always use aliased imports for better maintainability
+- Always use absolute imports for better maintainability
 
 ## Dark Mode
 
