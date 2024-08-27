@@ -39,72 +39,68 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        {isMobile ? (
-          <>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleMenuOpen}
-              sx={{
-                color: theme.palette.mode === 'light' ? '#ffffff' : 'inherit', 
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleMenuOpen}
+          sx={{
+            color: theme.palette.mode === 'light' ? '#ffffff' : 'inherit',
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleMenuClose}>
+            <a
+              href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/fork"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: theme.palette.text.primary,
               }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
+              <GitHubIcon style={{ marginRight: '8px' }} />
+              <Typography variant="body1">Fork Repo</Typography>
+            </a>
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <a
+              href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/issues/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: theme.palette.text.primary,
+              }}
             >
-              <MenuItem onClick={handleMenuClose}>
-                <a
-                  href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/fork"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  <GitHubIcon style={{ marginRight: '8px' }} />
-                  <Typography variant="body1">Fork Repo</Typography>
-                </a>
-              </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
-                <a
-                  href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate/issues/new"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  <BugReportIcon style={{ marginRight: '8px' }} />
-                  <Typography variant="body1">Report a Bug</Typography>
-                </a>
-              </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
-                <a
-                  href="https://discord.gg/8nVCV2M44U"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  <FaDiscord style={{ marginRight: '8px' }} />
-                  <Typography variant="body1">Join Discord</Typography>
-                </a>
-              </MenuItem>
-            </Menu>
-          </>
-        ) : null}
+              <BugReportIcon style={{ marginRight: '8px' }} />
+              <Typography variant="body1">Report a Bug</Typography>
+            </a>
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <a
+              href="https://discord.gg/8nVCV2M44U"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: theme.palette.text.primary,
+              }}
+            >
+              <FaDiscord style={{ marginRight: '8px' }} />
+              <Typography variant="body1">Join Discord</Typography>
+            </a>
+          </MenuItem>
+        </Menu>
         <Box display="flex" alignItems="center" flexGrow={1}>
           <FlashOnIcon sx={{ marginRight: 1 }} />
           <Typography variant="h6">Todo App</Typography>
@@ -133,15 +129,6 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
             >
               <BugReportIcon style={{ marginRight: '8px' }} />
               <Typography variant="body1">Report a Bug</Typography>
-            </Link>
-            <Link
-              href="https://discord.gg/8nVCV2M44U"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
-            >
-              <FaDiscord style={{ marginRight: '8px' }} />
-              <Typography variant="body1">Join Discord</Typography>
             </Link>
           </>
         )}

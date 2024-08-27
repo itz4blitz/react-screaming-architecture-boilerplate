@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CardContent, TextField, useMediaQuery } from '@mui/material';
+import { CardContent, TextField } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
@@ -9,40 +9,44 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@shared/components/Box';
 import Card from '@shared/components/Card';
 import Typography from '@shared/components/Typography';
-import { motion } from 'framer-motion';
 import Checkbox from '@shared/components/Checkbox';
 import IconButton from '@shared/components/IconButton';
 import { SxProps, Theme } from '@mui/material/styles';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 interface TodoItemProps {
   todo: Todo;
   onToggle: (id: number) => Promise<void>;
   onEdit: (id: number, title: string) => Promise<void>;
   onDelete: (id: number) => Promise<void>;
-  selected: boolean;
   onSelect: () => void;
+  selected: boolean;
   disableDelete: boolean;
   isAnyTodoBeingEdited: boolean;
   onStartEditing: () => void;
   onStopEditing: () => void;
+  isMobile: boolean;
   sx?: SxProps<Theme>;
+  isDragging?: boolean;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
   todo,
   onDelete,
   onEdit,
-  selected,
   onSelect,
+  selected,
   disableDelete,
   isAnyTodoBeingEdited,
   onStartEditing,
   onStopEditing,
+  isMobile,
+  isDragging = false,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -81,14 +85,20 @@ const TodoItem: React.FC<TodoItemProps> = ({
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
   };
 
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: todo.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+    listStyleType: 'none', // Remove list item bullet
+    padding: 0,
+    margin: '8px 0', // Add some vertical spacing between items
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 10 }}
-      transition={{ duration: 0.2 }}
-      layout
-    >
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <Card
         sx={{
           mt: 2,
@@ -99,10 +109,13 @@ const TodoItem: React.FC<TodoItemProps> = ({
           overflow: 'hidden',
           transition:
             'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-          backgroundColor:
-            theme.palette.mode === 'dark' ? theme.palette.grey[700] : undefined,
-          boxShadow: theme.shadows[1],
-          cursor: 'pointer',
+          backgroundColor: selected
+            ? theme.palette.action.selected
+            : theme.palette.mode === 'dark'
+              ? theme.palette.grey[700]
+              : undefined,
+          boxShadow: isDragging ? theme.shadows[8] : theme.shadows[1],
+          cursor: 'grab',
           '&:hover': {
             backgroundColor:
               theme.palette.mode === 'dark'
@@ -110,7 +123,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
                 : theme.palette.grey[200],
           },
         }}
-        onClick={onSelect}
+        onClick={(e) => {
+          e.preventDefault();
+          onSelect();
+        }}
       >
         <CardContent
           sx={{
@@ -131,7 +147,14 @@ const TodoItem: React.FC<TodoItemProps> = ({
               width: isMobile ? '100%' : 'auto',
             }}
           >
-            <Checkbox checked={selected} onChange={onSelect} />
+            <Checkbox
+              checked={selected}
+              onChange={(e) => {
+                e.stopPropagation();
+                onSelect();
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
           </Box>
           <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 2, mt: isMobile ? 2 : 0 }}>
             {isEditing ? (
@@ -241,7 +264,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
           </Box>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   );
 };
 
