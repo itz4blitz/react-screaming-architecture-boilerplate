@@ -46,3 +46,12 @@ export const deleteTodo = (id: number): Promise<void> => {
     resolve();
   });
 };
+
+export const updateTodoOrder = (newOrder: number[]): Promise<void> => {
+  return new Promise((resolve) => {
+    const todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    const reorderedTodos = newOrder.map(id => todos.find((todo: Todo) => todo.id === id)!);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reorderedTodos));
+    resolve();
+  });
+};

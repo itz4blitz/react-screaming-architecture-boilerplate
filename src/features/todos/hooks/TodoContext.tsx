@@ -5,6 +5,7 @@ import {
   addTodo as addTodoService,
   updateTodo,
   deleteTodo as deleteTodoService,
+  updateTodoOrder,
 } from '@features/todos/services/todoService';
 
 export interface TodoContextType {
@@ -67,11 +68,12 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
-  const reorderTodos = (newOrder: number[]) => {
+  const reorderTodos = async (newOrder: number[]) => {
     const reorderedTodos = newOrder.map(
       (id) => todos.find((todo) => todo.id === id)!
     );
     setTodos(reorderedTodos);
+    await updateTodoOrder(newOrder);
   };
 
   return (
