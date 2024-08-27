@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Switch, useMediaQuery, IconButton, Menu, MenuItem, Box, Link } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Switch,
+  useMediaQuery,
+  IconButton,
+  Menu,
+  MenuItem,
+  Box,
+  Link,
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -43,13 +54,31 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
               onClose={handleMenuClose}
             >
               <MenuItem onClick={handleMenuClose}>
-                <a href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', color: theme.palette.text.primary }}>
+                <a
+                  href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: theme.palette.text.primary,
+                  }}
+                >
                   <GitHubIcon style={{ marginRight: '8px' }} />
                   <Typography variant="body1">Fork Repo</Typography>
                 </a>
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
-                <a href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', color: theme.palette.text.primary }}>
+                <a
+                  href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: theme.palette.text.primary,
+                  }}
+                >
                   <BugReportIcon style={{ marginRight: '8px' }} />
                   <Typography variant="body1">Report a Bug</Typography>
                 </a>
@@ -63,11 +92,26 @@ const Header: React.FC<HeaderProps> = ({ toggleDarkMode }) => {
         </Box>
         {!isMobile && (
           <>
-            <Link href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork" target="_blank" rel="noopener noreferrer" sx={{ display: 'flex', alignItems: 'center', color: 'inherit', marginRight: 2 }}>
+            <Link
+              href="https://github.com/itz4blitz/screaming-architecture-boilerplate/fork"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                color: 'inherit',
+                marginRight: 2,
+              }}
+            >
               <GitHubIcon style={{ marginRight: '8px' }} />
               <Typography variant="body1">Fork Repo</Typography>
             </Link>
-            <Link href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new" target="_blank" rel="noopener noreferrer" sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}>
+            <Link
+              href="https://github.com/itz4blitz/screaming-architecture-boilerplate/issues/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
+            >
               <BugReportIcon style={{ marginRight: '8px' }} />
               <Typography variant="body1">Report a Bug</Typography>
             </Link>

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { List, Typography, Box, Checkbox, FormControlLabel, Button } from '@mui/material';
+import {
+  List,
+  Typography,
+  Box,
+  Checkbox,
+  FormControlLabel,
+  Button,
+} from '@mui/material';
 import TodoItem from '@features/todos/components/TodoItem';
 import { useTodos } from '@features/todos/hooks/useTodos';
 import { useTheme } from '@mui/material/styles';
@@ -12,17 +19,17 @@ const TodoList: React.FC = () => {
   const theme = useTheme();
 
   const handleSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedTodos(event.target.checked ? todos.map(todo => todo.id) : []);
+    setSelectedTodos(event.target.checked ? todos.map((todo) => todo.id) : []);
   };
 
   const handleDeleteSelected = () => {
-    selectedTodos.forEach(id => deleteTodo(id));
+    selectedTodos.forEach((id) => deleteTodo(id));
     setSelectedTodos([]);
   };
 
   const handleSelectTodo = (id: number) => {
     const newSelectedTodos = selectedTodos.includes(id)
-      ? selectedTodos.filter(todoId => todoId !== id)
+      ? selectedTodos.filter((todoId) => todoId !== id)
       : [...selectedTodos, id];
     setSelectedTodos(newSelectedTodos);
   };
@@ -36,12 +43,22 @@ const TodoList: React.FC = () => {
   };
 
   return (
-    <Box sx={{ mt: 4, px: 2, maxWidth: 600, mx: 'auto', borderRadius: 2, p: 3, backgroundColor: theme.palette.background.paper }}>
-      <Typography 
-        variant="h6" 
-        gutterBottom 
-        sx={{ 
-          color: theme.palette.text.primary, 
+    <Box
+      sx={{
+        mt: 4,
+        px: 2,
+        maxWidth: 600,
+        mx: 'auto',
+        borderRadius: 2,
+        p: 3,
+        backgroundColor: theme.palette.background.paper,
+      }}
+    >
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          color: theme.palette.text.primary,
           textAlign: 'center',
           fontFamily: theme.typography.fontFamily,
           fontWeight: theme.typography.fontWeightMedium,
@@ -50,21 +67,39 @@ const TodoList: React.FC = () => {
         Todo List
       </Typography>
       {todos.length === 0 ? (
-        <Typography variant="body1" sx={{ textAlign: 'center', my: 4, color: theme.palette.text.secondary }}>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: 'center',
+            my: 4,
+            color: theme.palette.text.secondary,
+          }}
+        >
           No todos yet. Add a new todo to get started!
         </Typography>
       ) : (
         <>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 2,
+            }}
+          >
             <FormControlLabel
               control={
                 <Checkbox
                   checked={selectedTodos.length === todos.length}
-                  indeterminate={selectedTodos.length > 0 && selectedTodos.length < todos.length}
+                  indeterminate={
+                    selectedTodos.length > 0 &&
+                    selectedTodos.length < todos.length
+                  }
                   onChange={handleSelectAll}
                   sx={{
                     '&.Mui-checked, &.MuiCheckbox-indeterminate': {
-                      color: theme.palette.mode === 'dark' ? '#008cff' : undefined,
+                      color:
+                        theme.palette.mode === 'dark' ? '#008cff' : undefined,
                     },
                   }}
                 />
@@ -72,7 +107,12 @@ const TodoList: React.FC = () => {
               label="Select All"
             />
             {selectedTodos.length >= 2 && (
-              <Button variant="contained" color="error" onClick={handleDeleteSelected} sx={{ borderRadius: '8px' }}>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={handleDeleteSelected}
+                sx={{ borderRadius: '8px' }}
+              >
                 Delete Selected
               </Button>
             )}
