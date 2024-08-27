@@ -2,17 +2,18 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { Todo } from '@shared/types';
 import {
   getTodos,
-  addTodo,
+  addTodo as addTodoService,
   updateTodo,
-  deleteTodo,
+  deleteTodo as deleteTodoService,
 } from '@features/todos/services/todoService';
 
-interface TodoContextType {
+export interface TodoContextType {
   todos: Todo[];
-  addTodo: (title: string) => Promise<void>;
   toggleTodo: (id: number) => Promise<void>;
-  editTodo: (id: number, title: string) => Promise<void>;
   deleteTodo: (id: number) => Promise<void>;
+  editTodo: (id: number, title: string) => Promise<void>;
+  reorderTodos: (newOrder: number[]) => void;
+  addTodo: (title: string) => Promise<void>;
 }
 
 export const TodoContext = createContext<TodoContextType | undefined>(
@@ -33,8 +34,8 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({
     setTodos(fetchedTodos);
   };
 
-  const addTodoItem = async (title: string) => {
-    const newTodo = await addTodo(title);
+  const addTodo = async (title: string) => {
+    const newTodo = await addTodoService(title);
     setTodos([...todos, newTodo]);
   };
 
@@ -49,7 +50,7 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const editTodoItem = async (id: number, title: string) => {
+  const editTodo = async (id: number, title: string) => {
     const todoToEdit = todos.find((todo) => todo.id === id);
     if (todoToEdit) {
       const updatedTodo = await updateTodo({
@@ -61,19 +62,27 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const deleteTodoItem = async (id: number) => {
-    await deleteTodo(id);
+  const deleteTodo = async (id: number) => {
+    await deleteTodoService(id);
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
+  const reorderTodos = (newOrder: number[]) => {
+    const reorderedTodos = newOrder.map(
+      (id) => todos.find((todo) => todo.id === id)!
+    );
+    setTodos(reorderedTodos);
   };
 
   return (
     <TodoContext.Provider
       value={{
         todos,
-        addTodo: addTodoItem,
         toggleTodo,
-        editTodo: editTodoItem,
-        deleteTodo: deleteTodoItem,
+        deleteTodo,
+        editTodo,
+        reorderTodos,
+        addTodo,
       }}
     >
       {children}

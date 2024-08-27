@@ -35,10 +35,10 @@ const CreateTodoForm: React.FC = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim()) {
-      addTodo(title);
+      await addTodo(title.trim());
       setTitle('');
     }
   };
