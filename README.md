@@ -2,6 +2,12 @@
 
 A modern, scalable React + TypeScript boilerplate using Vite, with a focus on maintainable architecture and developer experience.
 
+## View the Deployed Application
+
+You can view the deployed application at the following URL:
+
+[https://itz4blitz.github.io/react-screaming-architecture-boilerplate/](https://itz4blitz.github.io/react-screaming-architecture-boilerplate/)
+
 ## Features
 
 - ⚡️ Vite for lightning-fast builds and hot module replacement
@@ -9,7 +15,7 @@ A modern, scalable React + TypeScript boilerplate using Vite, with a focus on ma
 - ⚛️ React for building user interfaces
 - 📁 Screaming Architecture for clear, scalable project structure
 - 🎨 Material-UI for pre-built, customizable components
-- 🛣️ Path aliases for clean import statements
+- 🛣️ Absolute imports for clean import statements
 - 🧹 ESLint and Prettier for code quality and consistency
 - 🌓 Dark mode support
 - 📱 Responsive design
@@ -28,6 +34,7 @@ src/
 │   │   ├── hooks/
 │   │   │   └── useTodos.ts
 │   │   ├── services/
+│   │   │   └── todoService.ts
 │   │   └── utils/
 │   └── _shared/
 │       ├── components/
@@ -36,6 +43,8 @@ src/
 │       │   ├── Header.tsx
 │       │   ├── Input.tsx
 │       │   ├── Nav.tsx
+│       │   ├── Box.tsx
+│       │   ├── Checkbox.tsx
 │       └── theme/
 │           └── index.ts
 └── pages/
@@ -48,19 +57,40 @@ src/
 ## Getting Started
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/your-username/screaming-architecture-boilerplate.git
-   cd screaming-architecture-boilerplate
+   git clone https://github.com/itz4blitz/react-screaming-architecture-boilerplate.git
+   cd react-screaming-architecture-boilerplate
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
+   If you don't have `pnpm` installed, you can install it via npm:
+
+   ```bash
+   npm install -g pnpm
+   ```
+
 3. Start the development server:
+
    ```bash
    pnpm dev
+   ```
+
+   Alternatively, you can use npm or yarn:
+
+   ```bash
+   npm run dev
+   ```
+
+   or
+
+   ```bash
+   yarn dev
    ```
 
 4. Open your browser and visit `http://localhost:5173`
@@ -70,11 +100,13 @@ src/
 - `pnpm dev`: Start the development server
 - `pnpm build`: Build the project for production
 - `pnpm lint`: Run ESLint
+- `pnpm format`: Run Prettier to format the code
 - `pnpm preview`: Preview the production build locally
+- `pnpm deploy`: Deploy the project to GitHub Pages
 
-## Path Aliases
+## Absolute Imports
 
-This boilerplate uses path aliases for cleaner import statements. The following aliases are available:
+This boilerplate uses absolute imports for cleaner import statements. The following structure is used:
 
 - `@/*`: `src/*`
 - `@features/*`: `src/features/*`
@@ -99,7 +131,7 @@ This boilerplate uses Material-UI for styling. You can customize the theme in `@
 - Implement lazy loading for better performance
 - Write unit tests for critical functionality
 - Use TypeScript's type system to its full potential
-- Always use aliased imports for better maintainability
+- Always use absolute imports for better maintainability
 
 ## Dark Mode
 

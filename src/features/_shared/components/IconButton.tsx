@@ -10,7 +10,10 @@ const IconButton: React.FC<IconButtonProps> = (props) => {
       {...props}
       sx={{
         ...props.sx,
-        color: theme.palette.mode === 'dark' ? theme.palette.text.primary : undefined,
+        color:
+          theme.palette.mode === 'dark'
+            ? theme.palette.text.primary
+            : undefined,
       }}
     />
   );

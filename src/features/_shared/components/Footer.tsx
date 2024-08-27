@@ -1,8 +1,15 @@
 import React from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Footer: React.FC = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <Box
@@ -22,7 +29,7 @@ const Footer: React.FC = () => {
     >
       <IconButton
         color="inherit"
-        href="https://github.com/yourusername/your-repo-name"
+        href="https://github.com/itz4blitz/screaming-architecture-boilerplate"
         target="_blank"
         rel="noopener noreferrer"
       >

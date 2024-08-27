@@ -17,13 +17,19 @@ const App: React.FC = () => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
-  const theme = useMemo(() => getAppTheme(darkMode ? 'dark' : 'light'), [darkMode]);
+  const theme = useMemo(
+    () => getAppTheme(darkMode ? 'dark' : 'light'),
+    [darkMode]
+  );
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TodoProvider>
-        <Header toggleDarkMode={() => setDarkMode(!darkMode)} darkMode={darkMode} />
+        <Header
+          toggleDarkMode={() => setDarkMode(!darkMode)}
+          darkMode={darkMode}
+        />
         <CreateTodoForm />
         <TodoList />
         <Footer />

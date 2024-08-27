@@ -10,14 +10,16 @@ const Card: React.FC<CardProps> = (props) => {
       {...props}
       sx={{
         ...props.sx,
-        backgroundColor: theme.palette.mode === 'dark' 
-          ? theme.palette.grey[800]
-          : theme.palette.background.paper,
-        boxShadow: theme.shadows[1],
-        '&&': {
-          backgroundColor: theme.palette.mode === 'dark' 
+        backgroundColor:
+          theme.palette.mode === 'dark'
             ? theme.palette.grey[800]
             : theme.palette.background.paper,
+        boxShadow: theme.shadows[1],
+        '&&': {
+          backgroundColor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[800]
+              : theme.palette.background.paper,
         },
       }}
     />
