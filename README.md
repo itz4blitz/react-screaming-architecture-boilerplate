@@ -71,6 +71,7 @@ src/
 - `pnpm build`: Build the project for production
 - `pnpm lint`: Run ESLint
 - `pnpm preview`: Preview the production build locally
+- `pnpm deploy`: Deploy the project to GitHub Pages
 
 ## Path Aliases
 
@@ -125,6 +126,12 @@ The boilerplate includes a sample Todo App feature, showcasing the recommended s
 ### Animations
 
 The Todo App feature uses Framer Motion to add smooth animations when adding, editing, and deleting todo items, enhancing the user experience.
+
+## View the Deployed Application
+
+You can view the deployed application at the following URL:
+
+[https://itz4blitz.github.io/screaming-architecture-boilerplate/](https://itz4blitz.github.io/screaming-architecture-boilerplate/)
 
 ## Contributing
 
