@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
     >
       <IconButton
         color="inherit"
-        href="https://github.com/itz4blitz/screaming-architecture-boilerplate"
+        href="https://github.com/itz4blitz/react-screaming-architecture-boilerplate"
         target="_blank"
         rel="noopener noreferrer"
       >
