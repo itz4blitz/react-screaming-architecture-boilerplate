@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TextField, Grid } from '@mui/material';
+import { TextField, Grid, Container } from '@mui/material';
 import { useTodos } from '@features/todos/hooks/useTodos';
 import Button from '@shared/components/Button';
 import { useTheme } from '@mui/material/styles';
@@ -41,52 +41,54 @@ const CreateTodoForm: React.FC = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', mt: 4, mb: 2 }}>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={2} alignItems="stretch">
-          <Grid item xs>
-            <TextField
-              fullWidth
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Begin typing a todo and press enter or click ADD"
-              size="medium"
-              inputRef={inputRef}
-              autoComplete="off"
-              sx={{
-                '& .MuiOutlinedInput-root': {
+    <Container maxWidth="sm" sx={{ py: 4 }}>
+      <Box sx={{ maxWidth: 600, mx: 'auto', mt: 4, mb: 2 }}>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2} alignItems="stretch">
+            <Grid item xs>
+              <TextField
+                fullWidth
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Begin typing a todo and press enter or click ADD"
+                size="medium"
+                inputRef={inputRef}
+                autoComplete="off"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: theme.shape.borderRadius / 2,
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.primary.dark,
+                    },
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.primary.dark,
+                    },
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
                   borderRadius: theme.shape.borderRadius / 2,
-                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: theme.palette.primary.dark,
-                  },
-                  '&:hover .MuiOutlinedInput-notchedOutline': {
-                    borderColor: theme.palette.primary.dark,
-                  },
-                },
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              sx={{
-                borderRadius: theme.shape.borderRadius / 2,
-                textTransform: 'uppercase',
-                height: '100%',
-                backgroundColor: theme.palette.primary.dark,
-                '&:hover': {
+                  textTransform: 'uppercase',
+                  height: '100%',
                   backgroundColor: theme.palette.primary.dark,
-                },
-              }}
-            >
-              ADD
-            </Button>
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.dark,
+                  },
+                }}
+              >
+                ADD
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </form>
-    </Box>
+        </form>
+      </Box>
+    </Container>
   );
 };
 
