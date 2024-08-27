@@ -2,6 +2,12 @@
 
 A modern, scalable React + TypeScript boilerplate using Vite, with a focus on maintainable architecture and developer experience.
 
+## View the Deployed Application
+
+You can view the deployed application at the following URL:
+
+[https://itz4blitz.github.io/screaming-architecture-boilerplate/](https://itz4blitz.github.io/screaming-architecture-boilerplate/)
+
 ## Features
 
 - ⚡️ Vite for lightning-fast builds and hot module replacement
@@ -148,12 +154,6 @@ The boilerplate includes a sample Todo App feature, showcasing the recommended s
 ### Animations
 
 The Todo App feature uses Framer Motion to add smooth animations when adding, editing, and deleting todo items, enhancing the user experience.
-
-## View the Deployed Application
-
-You can view the deployed application at the following URL:
-
-[https://itz4blitz.github.io/screaming-architecture-boilerplate/](https://itz4blitz.github.io/screaming-architecture-boilerplate/)
 
 ## Contributing
 
