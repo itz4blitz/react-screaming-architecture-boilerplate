@@ -100,7 +100,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
                     transition: 'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
                     backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : undefined,
                     boxShadow: theme.shadows[1],
+                    cursor: 'pointer',
+                    '&:hover': {
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[200],
+                    },
                 }}
+                onClick={onSelect}
             >
                 <CardContent sx={{ 
                     display: 'flex', 
@@ -155,7 +160,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
                     </Box>
                     <Box sx={{ display: 'flex', mt: isMobile ? 2 : 0 }}>
                         <IconButton 
-                            onClick={handleEdit} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleEdit();
+                            }}
                             size={isMobile ? "small" : "medium"}
                             disabled={isAnyTodoBeingEdited && !isEditing}
                             sx={{
@@ -171,7 +179,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
                             {isEditing ? <SaveIcon /> : <EditIcon />}
                         </IconButton>
                         <IconButton 
-                            onClick={() => onDelete(todo.id)} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onDelete(todo.id);
+                            }}
                             size={isMobile ? "small" : "medium"}
                             disabled={disableDelete}
                             sx={{
