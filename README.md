@@ -6,7 +6,7 @@ A modern, scalable React + TypeScript boilerplate using Vite, with a focus on ma
 
 You can view the deployed application at the following URL:
 
-[https://itz4blitz.github.io/screaming-architecture-boilerplate/](https://itz4blitz.github.io/screaming-architecture-boilerplate/)
+[https://itz4blitz.github.io/react-screaming-architecture-boilerplate/](https://itz4blitz.github.io/react-screaming-architecture-boilerplate/)
 
 ## Features
 
@@ -59,8 +59,8 @@ src/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/itz4blitz/screaming-architecture-boilerplate.git
-   cd screaming-architecture-boilerplate
+   git clone https://github.com/itz4blitz/react-screaming-architecture-boilerplate.git
+   cd react-screaming-architecture-boilerplate
    ```
 
 2. Install dependencies:
