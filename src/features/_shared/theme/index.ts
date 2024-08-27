@@ -41,7 +41,10 @@ const getTheme = (mode: 'light' | 'dark'): ThemeOptions => ({
         root: {
           color: mode === 'light' ? '#666666' : '#b0b0b0',
           '&:hover': {
-            backgroundColor: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
+            backgroundColor:
+              mode === 'light'
+                ? 'rgba(0, 0, 0, 0.04)'
+                : 'rgba(255, 255, 255, 0.08)',
           },
         },
       },
@@ -58,4 +61,5 @@ const getTheme = (mode: 'light' | 'dark'): ThemeOptions => ({
   },
 });
 
-export const getAppTheme = (mode: 'light' | 'dark') => createTheme(getTheme(mode));
+export const getAppTheme = (mode: 'light' | 'dark') =>
+  createTheme(getTheme(mode));

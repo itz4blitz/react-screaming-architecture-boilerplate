@@ -1,6 +1,11 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { Todo } from '@shared/types';
-import { getTodos, addTodo, updateTodo, deleteTodo } from '@features/todos/services/todoService';
+import {
+  getTodos,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+} from '@features/todos/services/todoService';
 
 interface TodoContextType {
   todos: Todo[];
@@ -10,9 +15,13 @@ interface TodoContextType {
   deleteTodo: (id: number) => Promise<void>;
 }
 
-export const TodoContext = createContext<TodoContextType | undefined>(undefined);
+export const TodoContext = createContext<TodoContextType | undefined>(
+  undefined
+);
 
-export const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const TodoProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
@@ -30,32 +39,43 @@ export const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const toggleTodo = async (id: number) => {
-    const todoToToggle = todos.find(todo => todo.id === id);
+    const todoToToggle = todos.find((todo) => todo.id === id);
     if (todoToToggle) {
-      const updatedTodo = await updateTodo({ ...todoToToggle, completed: !todoToToggle.completed });
-      setTodos(todos.map(todo => todo.id === id ? updatedTodo : todo));
+      const updatedTodo = await updateTodo({
+        ...todoToToggle,
+        completed: !todoToToggle.completed,
+      });
+      setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
     }
   };
 
   const editTodoItem = async (id: number, title: string) => {
-    const todoToEdit = todos.find(todo => todo.id === id);
+    const todoToEdit = todos.find((todo) => todo.id === id);
     if (todoToEdit) {
       const updatedTodo = await updateTodo({
         ...todoToEdit,
         title,
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       });
-      setTodos(todos.map(todo => todo.id === id ? updatedTodo : todo));
+      setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
     }
   };
 
   const deleteTodoItem = async (id: number) => {
     await deleteTodo(id);
-    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo: addTodoItem, toggleTodo, editTodo: editTodoItem, deleteTodo: deleteTodoItem }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        addTodo: addTodoItem,
+        toggleTodo,
+        editTodo: editTodoItem,
+        deleteTodo: deleteTodoItem,
+      }}
+    >
       {children}
     </TodoContext.Provider>
   );

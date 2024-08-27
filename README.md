@@ -48,29 +48,38 @@ src/
 ## Getting Started
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/your-username/screaming-architecture-boilerplate.git
+   git clone https://github.com/itz4blitz/screaming-architecture-boilerplate.git
    cd screaming-architecture-boilerplate
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
+
    If you don't have `pnpm` installed, you can install it via npm:
+
    ```bash
    npm install -g pnpm
    ```
 
 3. Start the development server:
+
    ```bash
    pnpm dev
    ```
+
    Alternatively, you can use npm or yarn:
+
    ```bash
    npm run dev
    ```
+
    or
+
    ```bash
    yarn dev
    ```
@@ -82,6 +91,7 @@ src/
 - `pnpm dev`: Start the development server
 - `pnpm build`: Build the project for production
 - `pnpm lint`: Run ESLint
+- `pnpm format`: Run Prettier to format the code
 - `pnpm preview`: Preview the production build locally
 - `pnpm deploy`: Deploy the project to GitHub Pages
 

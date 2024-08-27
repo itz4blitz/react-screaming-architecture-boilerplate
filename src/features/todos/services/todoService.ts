@@ -15,7 +15,7 @@ export const addTodo = async (title: string): Promise<Todo> => {
     title,
     completed: false,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   };
   const todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   todos.push(newTodo);
@@ -30,7 +30,7 @@ export const updateTodo = (updatedTodo: Todo): Promise<Todo> => {
     if (index !== -1) {
       todos[index] = {
         ...updatedTodo,
-        updatedAt: updatedTodo.updatedAt || new Date().toISOString()
+        updatedAt: updatedTodo.updatedAt || new Date().toISOString(),
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
     }
