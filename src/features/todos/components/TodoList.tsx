@@ -165,6 +165,7 @@ const TodoList: React.FC = () => {
                     onStartEditing={() => handleStartEditing(todo.id)}
                     onStopEditing={handleStopEditing}
                     isMobile={isMobile}
+                    isDragging={activeTodo?.id === todo.id}
                   />
                 ))}
               </div>
@@ -192,7 +193,7 @@ const TodoList: React.FC = () => {
                     onStartEditing={() => {}}
                     onStopEditing={() => {}}
                     isMobile={isMobile}
-                    isDragging
+                    isDragging={true}
                   />
                 </div>
               ) : null}

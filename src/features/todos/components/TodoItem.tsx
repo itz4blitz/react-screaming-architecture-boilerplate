@@ -58,11 +58,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
   const handleEdit = () => {
     if (isEditing) {
       onEdit(todo.id, editedTitle);
+      setIsEditing(false);
       onStopEditing();
     } else {
+      setIsEditing(true);
       onStartEditing();
     }
-    setIsEditing(!isEditing);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -71,9 +72,9 @@ const TodoItem: React.FC<TodoItemProps> = ({
     }
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    inputRef.current?.focus();
+  const handleBlur = () => {
+    // Remove the preventDefault and focus logic
+    handleEdit();
   };
 
   const safeFormatDate = (dateString: string | undefined) => {
@@ -98,7 +99,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style} {...(isEditing ? {} : { ...attributes, ...listeners })}>
       <Card
         sx={{
           mt: 2,
